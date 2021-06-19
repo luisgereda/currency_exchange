@@ -69,11 +69,11 @@ export default function ConvertorPage() {
     setCurrency2(key1);
     const number2 = number + 1;
     setNumber(number2);
-    number2 % 2 == 0 ? setResult(amount * rate) : setResult(amount / rate);
+    number2 % 2 === 0 ? setResult(amount * rate) : setResult(amount / rate);
   }
 
   return (
-    <div class="container">
+    <div className="container">
       <h1>Welcome to the Currency Convertor</h1>
       <h3 style={{ color: "black" }}> Select the base and target currencies</h3>
       <div>
@@ -108,7 +108,7 @@ export default function ConvertorPage() {
           <button
             style={{ marginTop: 15 }}
             type="button"
-            class="btn btn-success"
+            className="btn btn-success"
             onClick={convert}
           >
             Convert
@@ -118,7 +118,7 @@ export default function ConvertorPage() {
             style={{ marginTop: 15, marginLeft: 15 }}
             onClick={change}
             type="button"
-            class="btn btn-success"
+            className="btn btn-success"
           >
             Exchange Currencies
           </button>
