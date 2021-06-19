@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Footer from "../footer/footer";
 
 export default function ConvertorPage() {
   const [currencyBase, setCurrencyBase] = useState("EUR");
@@ -73,54 +74,72 @@ export default function ConvertorPage() {
   }
 
   return (
-    <div>
+    <div class="container">
       <h1>Welcome to the Currency Convertor</h1>
-      <h2>Select the base and target currencies:</h2>
+      <h3 style={{ color: "black" }}> Select the base and target currencies</h3>
       <div>
-        <h2>Base:</h2>
-        <input
-          type="number"
-          onChange={(event) => {
-            setAmount(event.target.value);
-          }}
-          value={amount}
-        ></input>
-        <select onChange={currencySource} value={currencyBase}>
-          {symbols.map((currency, index) => (
-            <option value={currency.code} key={index}>
-              {currency.description}
-            </option>
-          ))}
-        </select>
-        <h2>Target:</h2>
-        <select onChange={currencyTarget} value={currency2}>
-          {symbols.map((currency, index) => (
-            <option value={currency.code} key={index}>
-              {currency.description}
-            </option>
-          ))}
-        </select>
         <div>
-          <button style={{ marginTop: 15 }} onClick={convert}>
-            First Convert
-          </button>
+          <h2>Base:</h2>
+          <input
+            type="number"
+            onChange={(event) => {
+              setAmount(event.target.value);
+            }}
+            value={amount}
+          ></input>
+          <select onChange={currencySource} value={currencyBase}>
+            {symbols.map((currency, index) => (
+              <option value={currency.code} key={index}>
+                {currency.description}
+              </option>
+            ))}
+          </select>
         </div>
-        <button style={{ marginTop: 15 }} onClick={change}>
-          Exchange Currencies
-        </button>
-        <h1>
-          {" "}
-          {result.toFixed(2)} {currency2}
-        </h1>
+        <div>
+          <h2>Target:</h2>
+          <select onChange={currencyTarget} value={currency2}>
+            {symbols.map((currency, index) => (
+              <option value={currency.code} key={index}>
+                {currency.description}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <button
+            style={{ marginTop: 15 }}
+            type="button"
+            class="btn btn-success"
+            onClick={convert}
+          >
+            Convert
+          </button>
+
+          <button
+            style={{ marginTop: 15, marginLeft: 15 }}
+            onClick={change}
+            type="button"
+            class="btn btn-success"
+          >
+            Exchange Currencies
+          </button>
+          <h1>
+            {" "}
+            {result.toFixed(2)} {currency2}
+          </h1>
+        </div>
       </div>
-      <h2>Review historical rates:</h2>
-      <input
-        type="date"
-        onChange={(event) => {
-          setDate(event.target.value);
-        }}
-        value={date}
-      ></input>
+      <div>
+        <h2>Review historical rates:</h2>
+        <input
+          type="date"
+          onChange={(event) => {
+            setDate(event.target.value);
+          }}
+          value={date}
+        ></input>
+      </div>
+      <Footer></Footer>
     </div>
   );
 }

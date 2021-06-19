@@ -1,0 +1,32 @@
+@keyframes blink {
+  0% {
+    background: #399926;
+  }
+  20% {
+    background: rgb(214, 253, 40);
+  }
+  40% {
+    background: rgb(248, 32, 4);
+  }
+  60% {
+    background: rgb(1, 48, 255);
+  }
+  80% {
+    background: rgb(255, 5, 255);
+  }
+}
+
+.footer {
+  background-color: #399926;
+  text-align: center;
+  min-height: 2rem;
+  width: 100%;
+  margin: 2rem;
+  border: 1px solid black;
+  font-family: monospace;
+  font-size: 20px;
+  color: whitesmoke;
+  display: block;
+  animation: blink 10s infinite;
+  -webkit-animation: blink 10s infinite;
+}
