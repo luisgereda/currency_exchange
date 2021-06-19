@@ -20,7 +20,6 @@ export default function ConvertorPage() {
   const year = today.getFullYear(today);
   const todayFormated =
     month2 > 9 ? `${year}-${month2}-${day}` : `${year}-0${month2}-${day}`;
-  console.log(todayFormated);
 
   useEffect(() => {
     async function GetCurrencies() {
