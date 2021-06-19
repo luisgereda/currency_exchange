@@ -9,6 +9,7 @@ export default function ConvertorPage() {
   const [symbols, setSymbols] = useState([]);
   const [rate, setRate] = useState(1);
   const [result, setResult] = useState(0);
+  const [number, setNumber] = useState(0);
 
   useEffect(() => {
     async function GetCurrencies() {
@@ -49,6 +50,17 @@ export default function ConvertorPage() {
     setRate(filter[0].rate);
 
     setResult(filter[0].rate * amount);
+    setNumber(0);
+  }
+
+  async function change() {
+    const key1 = currencyBase;
+    const key2 = currency2;
+    setCurrencyBase(key2);
+    setCurrency2(key1);
+    const number2 = number + 1;
+    setNumber(number2);
+    number2 % 2 == 0 ? setResult(amount * rate) : setResult(amount / rate);
   }
 
   return (
@@ -84,8 +96,10 @@ export default function ConvertorPage() {
             First Convert
           </button>
         </div>
-
-        <h1> {result}</h1>
+        <button style={{ marginTop: 15 }} onClick={change}>
+          Exchange Currencies
+        </button>
+        <h1> {result.toFixed(2)}</h1>
       </div>
     </div>
   );
