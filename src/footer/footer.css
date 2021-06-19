@@ -20,7 +20,7 @@
   background-color: #399926;
   text-align: center;
   min-height: 2rem;
-  width: 100%;
+  min-width: 2rem;
   margin: 2rem;
   border: 1px solid black;
   font-family: monospace;
@@ -29,4 +29,5 @@
   display: block;
   animation: blink 10s infinite;
   -webkit-animation: blink 10s infinite;
+  display: flexbox;
 }

@@ -3,40 +3,5 @@
   background-image: url("https://blogs.worldbank.org/sites/default/files/styles/hero/public/2021-04/currencies_hero_image.jpg?itok=iybrd_e0");
   background-color: rgb(71, 219, 150);
   background-blend-mode: screen;
-  margin: 0;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  display: flexbox;
 }

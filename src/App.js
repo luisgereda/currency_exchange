@@ -3,7 +3,7 @@ import ConvertorPage from "./pages/convertor";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ display: "flex" }}>
       <ConvertorPage></ConvertorPage>
     </div>
   );
