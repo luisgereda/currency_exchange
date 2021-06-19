@@ -10,6 +10,16 @@ export default function ConvertorPage() {
   const [rate, setRate] = useState(1);
   const [result, setResult] = useState(0);
   const [number, setNumber] = useState(0);
+  const [date, setDate] = useState("");
+
+  const today = new Date();
+  const month = today.getMonth(today);
+  const month2 = month + 1;
+  const day = today.getDate(today);
+  const year = today.getFullYear(today);
+  const todayFormated =
+    month2 > 9 ? `${year}-${month2}-${day}` : `${year}-0${month2}-${day}`;
+  console.log(todayFormated);
 
   useEffect(() => {
     async function GetCurrencies() {
@@ -18,6 +28,7 @@ export default function ConvertorPage() {
           "https://api.exchangerate.host/symbols"
         );
         setSymbols(Object.values(response.data.symbols));
+        setDate(todayFormated);
       } catch (e) {
         console.log(e);
       }
@@ -35,7 +46,7 @@ export default function ConvertorPage() {
 
   async function convert() {
     const response2 = await axios.get(
-      `https://api.exchangerate.host/latest?base=${currencyBase}`
+      `https://api.exchangerate.host/${date}?base=${currencyBase}`
     );
     const currencies = Object.keys(response2.data.rates);
     const currenciesAndRate = currencies.map((currency, index) => ({
@@ -46,9 +57,7 @@ export default function ConvertorPage() {
     const filter = currenciesAndRate.filter((currency) => {
       return currency.title.includes(`${currency2}`);
     });
-
     setRate(filter[0].rate);
-
     setResult(filter[0].rate * amount);
     setNumber(0);
   }
@@ -99,8 +108,19 @@ export default function ConvertorPage() {
         <button style={{ marginTop: 15 }} onClick={change}>
           Exchange Currencies
         </button>
-        <h1> {result.toFixed(2)}</h1>
+        <h1>
+          {" "}
+          {result.toFixed(2)} {currency2}
+        </h1>
       </div>
+      <h2>Review historical rates:</h2>
+      <input
+        type="date"
+        onChange={(event) => {
+          setDate(event.target.value);
+        }}
+        value={date}
+      ></input>
     </div>
   );
 }
