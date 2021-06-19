@@ -73,7 +73,7 @@ export default function ConvertorPage() {
   }
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <h1>Welcome to the Currency Convertor</h1>
       <h3 style={{ color: "black" }}> Select the base and target currencies</h3>
       <div>
@@ -85,8 +85,13 @@ export default function ConvertorPage() {
               setAmount(event.target.value);
             }}
             value={amount}
+            class="form-control"
           ></input>
-          <select onChange={currencySource} value={currencyBase}>
+          <select
+            onChange={currencySource}
+            value={currencyBase}
+            class="form-select"
+          >
             {symbols.map((currency, index) => (
               <option value={currency.code} key={index}>
                 {currency.description}
@@ -96,7 +101,11 @@ export default function ConvertorPage() {
         </div>
         <div>
           <h2>Target:</h2>
-          <select onChange={currencyTarget} value={currency2}>
+          <select
+            onChange={currencyTarget}
+            value={currency2}
+            class="form-select"
+          >
             {symbols.map((currency, index) => (
               <option value={currency.code} key={index}>
                 {currency.description}
